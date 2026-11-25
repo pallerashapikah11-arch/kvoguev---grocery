@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K-Vogue Grocery Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?
+family=Lilita+One&family=Nunito:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+<link rel="stylesheet" href="jed.css">
+</head>
+
+<body>
+<header class="topbar hidden" id="topbar">
+<button class="menu-button" id="menuButton">☰</button>
+
+<a class="brand" href="#" id="homeButton">
+  <span class="brand-mark">K</span>
+  <span>K-VOGUE<small>GROCERY STORE</small></span>
+</a>
+
+<div class="search">
+    <input id="searchInput" type="search" placeholder="Search groceries...">
+    <button id="searchButton">⌕</button>
+</div>
+
+<button class="cart-button" id="cartButton">Cart <span id="cartCount">0</span></button>
+</header>
+
+<div class="menu-overlay hidden" id="menuOverlay"></div>
+  <aside class="side-menu" id="sideMenu">
+  <div class="side-menu-header">
+  <div class="side-menu-brand">
+ <span class="brand-mark">K</span>
+ <span>K-VOGUE<small>GROCERY STORE</small></span>
+</div>
+<button class="close-menu" id="closeMenu">×</button>
+</div>
+<div class="menu-user">
+<div class="profile-avatar" id="menuAvatar">K</div>
+<div>
+<strong id="menuUserName">Guest User</strong>
+<small id="menuUserEmail">Please log in</small>
+</div>
+</div>
+<nav class="menu-links">
+<button data-page="shopPage">⌂ <span>Home / Shop</span></button>
+<button data-page="profilePage">♙ <span>My Profile</span></button>
+
+<button data-page="ordersPage">▤ <span>My Orders</span></button>
+<button data-page="detailsPage">i <span>About K-Vogue</span></button>
+</nav>
+<button class="menu-logout" id="menuLogout">Log Out</button>
+</aside>
+<main>
+<section id="welcomePage" class="welcome-page">
+<div class="welcome-frame">
+<div class="welcome-content">
+<p class="welcome-small">WELCOME TO</p>
+<h1>K-VOGUE</h1>
+<h2>GROCERY STORE</h2>
+<p class="welcome-description">Fresh finds, happy days, and everything you need in
+one place.</p>
+<div class="welcome-buttons">
+<button class="welcome-primary" id="welcomeSignup">Sign Up</button>
+<button class="welcome-secondary" id="welcomeLogin">Log In</button>
+</div>
+<p class="welcome-note">FRESH EVERY DAY • SHOP THE K-VOGUE WAY</p>
+</div>
+</div>
+</section>
+<section id="signupPage" class="auth-page hidden">
+<div class="auth-card">
+<a class="auth-brand" href="#" id="signupHome">K-VOGUE</a>
+<p class="auth-kicker">WELCOME TO OUR GROCERY FAMILY</p>
+<h2>Create Your Account</h2>
+<p class="auth-subtitle">Sign up to start shopping with K-Vogue.</p>
+<form id="signupForm">
+<label>Full Name<input id="signupName" type="text" placeholder="Enter your full
+name" required></label>
+<label>Email Address<input id="signupEmail" type="email" placeholder="Enter your
+email" required></label>
+<label>Password<input id="signupPassword" type="password" placeholder="Create a
+password" minlength="6" required></label>
+<label>Confirm Password<input id="signupConfirm" type="password"
+placeholder="Confirm your password" minlength="6" required></label>
+<button class="primary-button full-button" type="submit">Create Account</button>
+</form>
+<p class="auth-switch">Already have an account? <button id="goLogin">Log In</
+button></p>
+<button class="back-link" id="signupBack">Back to Welcome</button>
+</div>
+</section>
+<section id="loginPage" class="auth-page hidden">
+
+<div class="auth-card">
+<a class="auth-brand" href="#" id="loginHome">K-VOGUE</a>
+<p class="auth-kicker">NICE TO SEE YOU AGAIN</p>
+<h2>Welcome Back!</h2>
+<p class="auth-subtitle">Log in to continue shopping.</p>
+<form id="loginForm">
+<label>Email Address<input id="loginEmail" type="email" placeholder="Enter your
+email" required></label>
+<label>Password<input id="loginPassword" type="password" placeholder="Enter your
+password" required></label>
+<button class="primary-button full-button" type="submit">Log In</button>
+</form>
+<p class="auth-switch">Don't have an account? <button id="goSignup">Sign Up</
+button></p>
+<button class="back-link" id="loginBack">Back to Welcome</button>
+</div>
+</section>
+<section id="shopPage" class="page hidden">
+<section class="promo-banner">
+<div class="promo-copy">
+<p class="eyebrow">HELLO, GROCERY LOVERS!</p>
+<h1>FRESH FINDS,<br>HAPPY DAYS!</h1>
+<p>Everything you love, all in one basket.</p>
+<button class="yellow-button" id="shopNow">Shop Now</button>
+</div>
+</section>
+<section class="section-heading">
+<div>
+<h2 id="sectionTitle">K-Vogue / All Categories</h2>
+<p class="muted" id="resultCount">Browse our grocery products</p>
+</div>
+</section>
+<section class="filters">
+<select id="categoryFilter">
+<option value="All">All Categories</option>
+</select>
+<select id="sortFilter">
+<option value="default">Default</option>
+<option value="az">Category A–Z</option>
+<option value="za">Category Z–A</option>
+<option value="priceLow">Price: Low to High</option>
+<option value="priceHigh">Price: High to Low</option>
+</select>
+</section>
+
+<section class="shop-layout">
+<aside class="sidebar">
+<h3>Categories</h3>
+<div id="categoryButtons"></div>
+</aside>
+<div class="product-grid" id="productGrid"></div>
+</section>
+</section>
+<section id="profilePage" class="page hidden">
+<div class="content-card profile-card">
+<div class="profile-heading">
+<div class="profile-avatar large-avatar" id="profileAvatar">K</div>
+<div>
+<p class="eyebrow">MY ACCOUNT</p>
+<h2 id="profileDisplayName">My Profile</h2>
+<p class="muted">Your K-Vogue account information</p>
+</div>
+</div>
+<div class="profile-information">
+<div class="info-item"><span>Full Name</span><strong id="profileName">Not
+available</strong></div>
+<div class="info-item"><span>Email Address</span><strong id="profileEmail">Not
+available</strong></div>
+
+<div class="info-item"><span>Account Status</span><strong class="status-
+active">Active</strong></div>
+
+</div>
+<button class="primary-button" id="profileEditButton">Edit Profile</button>
+<button class="back-link" id="profileBack">Back to Shop</button>
+<form id="editProfileForm" class="hidden">
+<h3>Edit Your Information</h3>
+<label>Full Name<input id="editName" type="text" required></label>
+<label>Email Address<input id="editEmail" type="email" required></label>
+<button class="primary-button full-button" type="submit">Save Changes</button>
+<button class="back-link" type="button" id="cancelEdit">Cancel</button>
+</form>
+</div>
+</section>
+<section id="cartPage" class="page hidden">
+<div class="content-card">
+<h2>Your Cart</h2>
+<p class="muted">Review your selected products.</p>
+<div id="cartItems"></div>
+<div id="cartTotal" class="cart-total"></div>
+<button class="primary-button" id="checkoutButton">Proceed to Checkout</button>
+<button class="back-link" id="continueShopping">Continue Shopping</button>
+</div>
+
+</section>
+<section id="checkoutPage" class="page hidden">
+<div class="content-card checkout-card">
+<h2>Checkout</h2>
+<p class="muted">Enter your delivery and payment information.</p>
+<form id="checkoutForm">
+<label>Full Name<input id="deliveryName" type="text" required placeholder="Enter
+your name"></label>
+<label>Email Address<input id="deliveryEmail" type="email" required
+placeholder="Enter your email"></label>
+<label>Delivery Address<textarea id="deliveryAddress" required placeholder="Enter
+your complete address"></textarea></label>
+<label>Contact Number<input id="deliveryPhone" type="tel" required
+placeholder="Enter your contact number"></label>
+<div class="checkout-summary" id="checkoutSummary"></div>
+<div class="payment-method-section">
+<h3 class="payment-heading">Payment Method</h3>
+<p class="payment-subheading">Choose your preferred payment method.</p>
+<div class="payment-options">
+<label class="payment-option"><input type="radio" name="paymentMethod"
+value="GCash" required><span class="radio-circle"></span><span class="payment-icon
+gcash-icon">G</span><span class="payment-info"><strong>GCash</strong><small>Pay
+using GCash</small></span></label>
+<label class="payment-option"><input type="radio" name="paymentMethod"
+
+value="Maya"><span class="radio-circle"></span><span class="payment-icon maya-
+icon">M</span><span class="payment-info"><strong>Maya</strong><small>Pay using
+
+Maya</small></span></label>
+<label class="payment-option"><input type="radio" name="paymentMethod"
+value="MariBank"><span class="radio-circle"></span><span class="payment-icon
+maribank-icon">MB</span><span class="payment-info"><strong>MariBank</
+strong><small>Pay using MariBank</small></span></label>
+<label class="payment-option"><input type="radio" name="paymentMethod"
+value="Google Pay"><span class="radio-circle"></span><span class="payment-icon
+googlepay-icon">G</span><span class="payment-info"><strong>Google Pay</
+strong><small>Pay using Google Pay</small></span></label>
+<label class="payment-option"><input type="radio" name="paymentMethod"
+
+value="QR Ph"><span class="radio-circle"></span><span class="payment-icon qr-
+icon">QR</span><span class="payment-info"><strong>QR Ph</strong><small>Scan to
+
+pay</small></span></label>
+<label class="payment-option"><input type="radio" name="paymentMethod"
+value="Credit / Debit Card"><span class="radio-circle"></span><span class="payment-icon
+card-icon">CC</span><span class="payment-info"><strong>Credit / Debit Card</
+strong><small>Card payment</small></span></label>
+<label class="payment-option"><input type="radio" name="paymentMethod"
+value="Cash on Delivery"><span class="radio-circle"></span><span class="payment-icon
+
+cod-icon">COD</span><span class="payment-info"><strong>Cash on Delivery</
+strong><small>Pay when your order arrives</small></span></label>
+</div>
+</div>
+<div id="paymentSelection" class="selected-payment hidden">
+<h3>Selected Payment</h3>
+<div class="selected-payment-row">
+<span id="selectedPaymentIcon" class="payment-icon">G</span>
+<div><strong id="selectedPaymentText"></strong><small
+id="selectedPaymentDescription"></small></div>
+</div>
+<p id="paymentStatus"></p>
+</div>
+<div id="paymentDetails" class="payment-details hidden">
+<h3 id="paymentTitle">Payment Information</h3>
+<p id="paymentDescription"></p>
+<p class="payment-note">This is a demonstration checkout. Actual payment
+processing requires a secure payment gateway.</p>
+</div>
+<div class="delivery-estimate">
+<h3>Estimated Delivery</h3>
+<p id="estimatedDelivery">Your estimated delivery schedule will appear here.</p>
+<small>Estimated schedule only. Actual delivery may vary.</small>
+</div>
+<button class="primary-button full-button" type="submit">Place Order</button>
+</form>
+</div>
+</section>
+<section id="successPage" class="page hidden">
+<div class="content-card success-card">
+<div class="success-icon">✓</div>
+<h2>Order Successful!</h2>
+<p>Thank you for shopping with K-Vogue Grocery Store.</p>
+<div class="success-information">
+<p id="orderNumber" class="order-number"></p>
+<p id="orderPayment"></p>
+<p id="orderPaymentStatus"></p>
+<p id="orderTotal"></p>
+<p id="orderDelivery" class="order-delivery"></p>
+<p id="orderAddress"></p>
+</div>
+<button class="primary-button" id="backToShop">Back to Shop</button>
+<button class="back-link" id="viewOrdersAfterCheckout">View My Orders</button>
+</div>
+
+</section>
+<section id="ordersPage" class="page hidden">
+<div class="content-card">
+<h2>My Orders</h2>
+<p class="muted">Your previous K-Vogue orders.</p>
+<div id="ordersList"></div>
+<button class="back-link" id="ordersBack">Back to Shop</button>
+</div>
+</section>
+
+<section class="category-showcase">
+<section id="detailsPage" class="page hidden">
+<div class="content-card">
+<h2>About K-Vogue</h2>
+<p>Welcome to K-Vogue Grocery Store. Browse our available grocery products and add
+your selections to your cart.</p>
+<p>Our goal is to provide a simple and convenient online grocery shopping
+experience.</p>
+<button class="primary-button" id="detailsBack">Back to Shop</button>
+</div>
+</section>
+</main>
+<div class="toast hidden" id="toast"><span id="toastMessage"></span></div>
+<script src="jed.js"></script>
+</body>
+</html>
